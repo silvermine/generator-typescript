@@ -1,0 +1,23 @@
+{
+   "name": "@silvermine/generator-typescript",
+   "version": "0.9.0",
+   "author": "Jeremy Thomerson",
+   "files": [
+      "generators"
+   ],
+   "main": "generators/index.js",
+   "keywords": [
+      "typescript",
+      "yeoman-generator"
+   ],
+   "devDependencies": {
+      "@silvermine/eslint-config": "2.0.0-preview.1",
+      "eslint": "5.4.0"
+   },
+   "dependencies": {
+      "chalk": "2.1.0",
+      "underscore": "1.9.1",
+      "yeoman-generator": "3.1.1",
+      "yosay": "2.0.1"
+   }
+}
