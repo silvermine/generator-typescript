@@ -2,6 +2,7 @@
    "name": "@silvermine/generator-typescript",
    "version": "0.9.0",
    "author": "Jeremy Thomerson",
+   "license": "MIT",
    "files": [
       "generators"
    ],
