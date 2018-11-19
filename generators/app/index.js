@@ -39,6 +39,7 @@ module.exports = class extends Generator {
    _generateProjectConfigFiles() {
       this._generatePackageJSON();
       this._copyTemplate([ '.eslintrc.json' ]);
+      this._copyTemplate([ 'README.md' ]);
       if (this.config.isOpenSource) {
          this._copyTemplate([ 'LICENSE' ]);
       }
