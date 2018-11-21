@@ -38,6 +38,7 @@ module.exports = (grunt) => {
             types: './src/tsconfig.types.json',
             <%_ } _%>
          },
+         tscCommand: './node_modules/.bin/tsc',
       },
    };
 
@@ -49,31 +50,22 @@ module.exports = (grunt) => {
          target: [ ...config.js.all, ...config.ts.all ],
       },
 
-      ts: {
+      exec: {
+         options: {
+            failOnError: true,
+         },
          standards: {
-            tsconfig: {
-               tsconfig: config.ts.configs.standards,
-               passThrough: true,
-            },
+            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.standards }`,
          },
          <%_ if (isLibrary) { _%>
          types: {
-            tsconfig: {
-               tsconfig: config.ts.configs.types,
-               passThrough: true,
-            },
+            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.types }`,
          },
          esm: {
-            tsconfig: {
-               tsconfig: config.ts.configs.esm,
-               passThrough: true,
-            },
+            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.esm }`,
          },
          commonjs: {
-            tsconfig: {
-               tsconfig: config.ts.configs.commonjs,
-               passThrough: true,
-            },
+            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.commonjs }`,
          },
          <%_ } _%>
       },
@@ -144,7 +136,7 @@ module.exports = (grunt) => {
    });
 
    grunt.loadNpmTasks('grunt-eslint');
-   grunt.loadNpmTasks('grunt-ts');
+   grunt.loadNpmTasks('grunt-exec');
    <%_ if (isLibrary) { _%>
    grunt.loadNpmTasks('grunt-contrib-watch');
    <%_ } _%>
@@ -152,13 +144,13 @@ module.exports = (grunt) => {
    grunt.loadNpmTasks('grunt-webpack');
    <%_ } _%>
 
-   grunt.registerTask('standards', [ 'eslint', 'ts:standards' ]);
+   grunt.registerTask('standards', [ 'eslint', 'exec:standards' ]);
    grunt.registerTask('default', [ 'standards' ]);
    <%_ if (isLibrary) { _%>
 
-   grunt.registerTask('build-types', 'ts:types');
-   grunt.registerTask('build-esm', 'ts:esm');
-   grunt.registerTask('build-commonjs', 'ts:commonjs');
+   grunt.registerTask('build-types', 'exec:types');
+   grunt.registerTask('build-esm', 'exec:esm');
+   grunt.registerTask('build-commonjs', 'exec:commonjs');
    grunt.registerTask('build-ts-outputs', [ 'build-types', 'build-esm', 'build-commonjs' ]);
    <%_ } _%>
    <%_ if (isBrowser) { %>
