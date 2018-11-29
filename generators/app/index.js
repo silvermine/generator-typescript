@@ -7,6 +7,7 @@ const Generator = require('yeoman-generator'),
       _ = require('underscore');
 
 module.exports = class extends Generator {
+
    prompting() {
       this.log(yosay(`Let's generate a ${ chalk.red('TypeScript')} project!`));
 
@@ -16,10 +17,7 @@ module.exports = class extends Generator {
    }
 
    configuring() {
-      // eslint-disable-next-line
-      let author = this.spawnCommandSync('git', [ 'config', '--global', 'user.name' ], { stdio: 'pipe' }).stdout;
-
-      this.config.author = author.toString('utf8').trim();
+      this.config.author = this.user.git.name();
       this.config.currentYear = (new Date()).getFullYear();
       this.config.isBrowser = !this.config.isBackEnd;
    }
