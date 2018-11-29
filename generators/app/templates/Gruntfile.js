@@ -129,7 +129,7 @@ module.exports = (grunt) => {
       watch: {
          ts: {
             files: [ config.ts.src ],
-            tasks: [ 'build-types' ],
+            tasks: [ 'build-ts-outputs' ],
          },
       },
       <%_ } %>
