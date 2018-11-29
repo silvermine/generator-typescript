@@ -12,6 +12,19 @@
    },
    "author": "<%= author %>",
    "license": "<%= isOpenSource ? 'MIT' : 'PROPRIETARY' %>",
+   <%_ if (isOpenSource) { _%>
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/silvermine/<%= projectName %>.git"
+   },
+   "bugs": {
+      "url": "https://github.com/silvermine/<%= projectName %>/issues"
+   },
+   "homepage": "https://github.com/silvermine/<%= projectName %>#readme",
+   <%_ } _%>
+   "engines": {
+      "node": ">=6.0"
+   },
    "devDependencies": {
       "@silvermine/chai-strictly-equal": "1.0.0",
       "@silvermine/eslint-config": "2.0.0-preview.1",
