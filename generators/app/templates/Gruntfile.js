@@ -31,11 +31,11 @@ module.exports = (grunt) => {
             './tests/**/*.ts',
          ],
          configs: {
-            standards: './src/tsconfig.json',
+            standards: 'src/tsconfig.json',
             <%_ if (isLibrary) { _%>
-            commonjs: './src/tsconfig.commonjs.json',
-            esm: './src/tsconfig.esm.json',
-            types: './src/tsconfig.types.json',
+            commonjs: 'src/tsconfig.commonjs.json',
+            esm: 'src/tsconfig.esm.json',
+            types: 'src/tsconfig.types.json',
             <%_ } _%>
          },
          tscCommand: './node_modules/.bin/tsc',
@@ -109,7 +109,7 @@ module.exports = (grunt) => {
                      test: /\.ts$/,
                      loader: 'ts-loader',
                      options: {
-                        configFile: 'src/tsconfig.commonjs.json',
+                        configFile: config.ts.configs.commonjs,
                      },
                   },
                ],
