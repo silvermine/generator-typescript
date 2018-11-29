@@ -13,7 +13,7 @@ module.exports = class extends Generator {
       this.log(yosay(`Let's generate a ${ chalk.red('TypeScript')} project!`));
 
       return this.prompt(prompts({ folderName: this._getFolderName() })).then(answers => {
-         this.config = _.extend({}, answers);
+         this.answers = _.extend({}, answers);
       });
    }
 
@@ -22,9 +22,9 @@ module.exports = class extends Generator {
    }
 
    configuring() {
-      this.config.author = this.user.git.name();
-      this.config.currentYear = (new Date()).getFullYear();
-      this.config.isBrowser = !this.config.isBackEnd;
+      this.answers.author = this.user.git.name();
+      this.answers.currentYear = (new Date()).getFullYear();
+      this.answers.isBrowser = !this.answers.isBackEnd;
    }
 
    writing() {
@@ -44,7 +44,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '.eslintrc.json' ]);
       this._copyTemplate([ 'README.md' ]);
       this._copyTemplate([ '.gitignore' ]);
-      if (this.config.isOpenSource) {
+      if (this.answers.isOpenSource) {
          this._copyTemplate([ 'LICENSE' ]);
       }
    }
@@ -73,7 +73,7 @@ module.exports = class extends Generator {
    _addTsConfigFiles() {
       let configFiles = [];
 
-      if (this.config.isLibrary) {
+      if (this.answers.isLibrary) {
          configFiles = [
             'tsconfig.commonjs.json',
             'tsconfig.esm.json',
@@ -94,7 +94,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
          this.templatePath.apply(this, pathParts),
          this.destinationPath.apply(this, pathParts),
-         this.config
+         this.answers
       );
    }
 };
