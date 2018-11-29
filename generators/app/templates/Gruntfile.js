@@ -40,6 +40,12 @@ module.exports = (grunt) => {
          },
          tscCommand: './node_modules/.bin/tsc',
       },
+      <%_ if (isLibrary) { _%>
+      out: {
+         dist: './dist',
+         test: [ './.nyc_output', 'coverage' ],
+      },
+      <%_ } _%>
    };
 
    grunt.initConfig({
@@ -118,6 +124,12 @@ module.exports = (grunt) => {
          },
       },
       <%_ } _%>
+      <%_ if (isLibrary) { %>
+      clean: {
+         dist: config.out.dist,
+         testOutput: config.out.test,
+      },
+      <%_ } _%>
       <%_ if (isBrowser && isLibrary) { %>
       watch: {
          ts: {
@@ -139,6 +151,7 @@ module.exports = (grunt) => {
    grunt.loadNpmTasks('grunt-exec');
    <%_ if (isLibrary) { _%>
    grunt.loadNpmTasks('grunt-contrib-watch');
+   grunt.loadNpmTasks('grunt-contrib-clean');
    <%_ } _%>
    <%_ if (isBrowser) { _%>
    grunt.loadNpmTasks('grunt-webpack');
@@ -162,6 +175,6 @@ module.exports = (grunt) => {
    grunt.registerTask('build', [ 'build-ts-outputs' ]);
    <%_ } _%>
    <%_ if (isLibrary) { %>
-   grunt.registerTask('develop', [ 'build', 'watch' ]);
+   grunt.registerTask('develop', [ 'clean', 'build', 'watch' ]);
    <%_ } %>
 };
