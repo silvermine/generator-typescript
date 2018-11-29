@@ -4,6 +4,7 @@ const Generator = require('yeoman-generator'),
       prompts = require('./prompts'),
       chalk = require('chalk'),
       yosay = require('yosay'),
+      path = require('path'),
       _ = require('underscore');
 
 module.exports = class extends Generator {
@@ -11,9 +12,13 @@ module.exports = class extends Generator {
    prompting() {
       this.log(yosay(`Let's generate a ${ chalk.red('TypeScript')} project!`));
 
-      return this.prompt(prompts).then(answers => {
+      return this.prompt(prompts({ folderName: this._getFolderName() })).then(answers => {
          this.config = _.extend({}, answers);
       });
+   }
+
+   _getFolderName() {
+      return path.basename(this.destinationRoot());
    }
 
    configuring() {
