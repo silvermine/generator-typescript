@@ -95,7 +95,7 @@ module.exports = (grunt) => {
                // executed in node.js.
                globalObject: 'this',
                path: path.resolve(__dirname, 'dist'),
-               filename: '<%%= pkg.name %%>.min.js',
+               filename: '<%%= pkg.name %%>.js',
             },
             // Let wepback recognize both javascript and typescript files
             resolve: {
