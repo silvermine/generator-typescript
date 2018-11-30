@@ -131,6 +131,14 @@ module.exports = (grunt) => {
          testOutput: config.out.test,
       },
       <%_ } _%>
+      <%_ if (isLibrary) { %>
+      concurrent: {
+         'build-ts-outputs': [ 'build-types', 'build-esm', 'build-commonjs' ],
+         <%_ if (isBrowser) { _%>
+         'build': [ 'build-ts-outputs', 'build-umd' ],
+         <%_ } _%>
+      },
+      <%_ } _%>
       <%_ if (isBrowser && isLibrary) { %>
       watch: {<%# TODO: Use webpack-dev-server instead of watch for webpack bundle #%>
          ts: {
@@ -151,8 +159,9 @@ module.exports = (grunt) => {
    grunt.loadNpmTasks('grunt-eslint');
    grunt.loadNpmTasks('grunt-exec');
    <%_ if (isLibrary) { _%>
-   grunt.loadNpmTasks('grunt-contrib-watch');
    grunt.loadNpmTasks('grunt-contrib-clean');
+   grunt.loadNpmTasks('grunt-concurrent');
+   grunt.loadNpmTasks('grunt-contrib-watch');
    <%_ } _%>
    <%_ if (isBrowser) { _%>
    grunt.loadNpmTasks('grunt-webpack');
@@ -165,17 +174,19 @@ module.exports = (grunt) => {
    grunt.registerTask('build-types', 'exec:types');
    grunt.registerTask('build-esm', 'exec:esm');
    grunt.registerTask('build-commonjs', 'exec:commonjs');
-   grunt.registerTask('build-ts-outputs', [ 'build-types', 'build-esm', 'build-commonjs' ]);
+   grunt.registerTask('build-ts-outputs', 'concurrent:build-ts-outputs');
    <%_ } _%>
    <%_ if (isBrowser) { %>
    grunt.registerTask('build-umd', 'webpack:umd');
    <%_ } _%>
    <%_ if (isLibrary && isBrowser) { %>
-   grunt.registerTask('build', [ 'build-ts-outputs', 'build-umd' ]);
+   grunt.registerTask('build', [ 'concurrent:build' ]);
    <%_ } else if (isLibrary) { _%>
-   grunt.registerTask('build', [ 'build-ts-outputs' ]);
+   grunt.registerTask('build', [ 'concurrent:build-ts-outputs' ]);
+   <%_ } else if (isBrowser) { _%>
+   grunt.registerTask('build', [ 'build-umd' ]);
    <%_ } _%>
-   <%_ if (isLibrary) { %>
+   <%_ if (isLibrary || isBrowser) { %>
    grunt.registerTask('develop', [ 'clean', 'build', 'watch' ]);
    <%_ } %>
 };
