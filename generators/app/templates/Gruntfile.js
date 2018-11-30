@@ -131,7 +131,7 @@ module.exports = (grunt) => {
       },
       <%_ } _%>
       <%_ if (isBrowser && isLibrary) { %>
-      watch: {
+      watch: {<%# TODO: Use webpack-dev-server instead of watch for webpack bundle #%>
          ts: {
             files: [ config.ts.src ],
             tasks: [ 'build' ],
