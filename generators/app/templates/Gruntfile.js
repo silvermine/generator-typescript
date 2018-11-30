@@ -18,6 +18,7 @@ module.exports = (grunt) => {
 
    config = {
       js: {
+         entryFile: './src/index.ts',
          all: [
             'Gruntfile.js',
             './src/**/*.js',
@@ -78,7 +79,7 @@ module.exports = (grunt) => {
       <%_ if (isBrowser) { %>
       webpack: {
          umd: {
-            entry: './src/index.ts',
+            entry: config.js.entryFile,
             devtool: ENVIRONMENT === 'dev' ? 'eval-source-map' : false,
             output: {
                <%_ if (isLibrary) { _%>
