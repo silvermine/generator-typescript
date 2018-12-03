@@ -21,7 +21,9 @@
    ],
    "devDependencies": {
       "@silvermine/eslint-config": "2.0.0-preview.1",
-      "eslint": "5.4.0"
+      "eslint": "5.4.0",
+      "grunt": "1.0.3",
+      "grunt-eslint": "21.0.0"
    },
    "dependencies": {
       "chalk": "2.1.0",
