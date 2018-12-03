@@ -79,6 +79,8 @@ module.exports = class extends Generator {
             'tsconfig.esm.json',
             'tsconfig.types.json',
          ];
+      } else if (this.answers.isBrowser) {
+         configFiles = [ 'tsconfig.esm.json' ];
       }
       configFiles.push('tsconfig.json');
 

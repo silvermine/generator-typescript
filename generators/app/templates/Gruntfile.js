@@ -62,17 +62,21 @@ module.exports = (grunt) => {
             failOnError: true,
          },
          standards: {
-            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.standards }`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.standards}`,
          },
          <%_ if (isLibrary) { _%>
          types: {
-            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.types }`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.types}`,
          },
          esm: {
-            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.esm }`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm}`,
          },
          commonjs: {
-            cmd: `${ config.ts.tscCommand } -p ${ config.ts.configs.commonjs }`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.commonjs}`,
+         },
+         <%_ } else if (isBrowser) { _%>
+         esm: {
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm}`,
          },
          <%_ } _%>
       },
@@ -116,7 +120,7 @@ module.exports = (grunt) => {
                      test: /\.ts$/,
                      loader: 'ts-loader',
                      options: {
-                        configFile: config.ts.configs.commonjs,
+                        configFile: config.ts.configs.esm,
                      },
                   },
                ],
