@@ -62,21 +62,21 @@ module.exports = (grunt) => {
             failOnError: true,
          },
          standards: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.standards}`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.standards} --pretty`,
          },
          <%_ if (isLibrary) { _%>
          types: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.types}`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.types} --pretty`,
          },
          esm: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm}`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm} --pretty`,
          },
          commonjs: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.commonjs}`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.commonjs} --pretty`,
          },
          <%_ } else if (isBrowser) { _%>
          esm: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm}`,
+            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm} --pretty`,
          },
          <%_ } _%>
       },
