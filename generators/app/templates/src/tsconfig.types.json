@@ -1,5 +1,5 @@
 {
-   "extends": "../node_modules/@silvermine/typescript-config/tsconfig.types.json",
+   "extends": "@silvermine/typescript-config/tsconfig.types.json",
    "compilerOptions": {
       "outDir": "../dist/types/"
    }
