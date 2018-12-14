@@ -44,6 +44,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '.eslintrc.json' ]);
       this._copyTemplate([ 'README.md' ]);
       this._copyTemplate([ '.gitignore' ]);
+      this._copyTemplate([ '.npmignore' ]);
       if (this.answers.isOpenSource) {
          this._copyTemplate([ 'LICENSE' ]);
       }

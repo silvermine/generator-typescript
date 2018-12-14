@@ -1,5 +1,5 @@
 {
-   "name": "<%= projectName %>",
+   "name": "<%_ if (isOpenSource) { _%>@silvermine/<%_ } _%><%= projectName %>",
    "version": "0.9.0",
    "description": "",
    <%_ if (isLibrary) { _%>
