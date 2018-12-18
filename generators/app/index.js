@@ -83,12 +83,13 @@ module.exports = class extends Generator {
       } else if (this.answers.isBrowser) {
          configFiles = [ 'tsconfig.esm.json' ];
       }
-      configFiles.push('tsconfig.json');
 
       _.forEach(configFiles, (fileName) => {
          this._copyTemplate([ 'src', fileName ]);
       });
 
+      // Add root tsconfig
+      this._copyTemplate([ 'tsconfig.json' ]);
       // Add tsconfig for tests
       this._copyTemplate([ 'tests', 'tsconfig.json' ]);
    }
