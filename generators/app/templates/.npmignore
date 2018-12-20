@@ -7,6 +7,8 @@ coverage/**
 # Config files
 .eslintrc.json
 .eslintignore
+tsconfig.json
+src/tsconfig.*.json
 .mocha.opts
 .nycrc.json
 .travis.yml
