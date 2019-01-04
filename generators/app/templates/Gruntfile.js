@@ -1,24 +1,24 @@
 'use strict';
 
 <% if (isBrowser) { _%>
-const path = require('path');
-
 function getEnvironment(grunt) {
    const TYPES = [ 'prd', 'dev' ],
          env = grunt.option('env');
 
    return TYPES.indexOf(env) === -1 ? 'dev' : env;
 }
+
 <% } _%>
 module.exports = (grunt) => {
    <%_ if (isBrowser) { _%>
    const ENVIRONMENT = getEnvironment(grunt);
+
    <%_ } _%>
    let config;
 
    config = {
+      entryFile: './src/index.ts',
       js: {
-         entryFile: './src/index.ts',
          all: [
             'Gruntfile.js',
             './src/**/*.js',
@@ -40,6 +40,9 @@ module.exports = (grunt) => {
             <%_ } _%>
          },
          tscCommand: './node_modules/.bin/tsc',
+         <%_ if (isBrowser) { %>
+         webpackCommand: './node_modules/.bin/webpack',
+         <%_ } _%>
       },
       <%_ if (isLibrary) { _%>
       out: {
@@ -79,56 +82,12 @@ module.exports = (grunt) => {
             cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm} --pretty`,
          },
          <%_ } _%>
-      },
-      <%_ if (isBrowser) { %>
-      webpack: {
-         umd: {
-            entry: config.js.entryFile,
-            devtool: ENVIRONMENT === 'dev' ? 'eval-source-map' : false,
-            output: {
-               <%_ if (isLibrary) { _%>
-               // The name of the global variable that will be exported when the UMD
-               // bundle is executed
-               library: '<%= globalVarName %>',
-               libraryTarget: 'umd',
-               <%_ } _%>
-               // Use `this` instead of `window` as the global variable that the UMD
-               // bundle sets the library to when executed in a node.js context.
-               //
-               // Ironically, if we don't set this configuration value to `this`, the UMD
-               // bundle will throw a `ReferenceError: "window" is undefined` error when
-               // executed in node.js.
-               globalObject: 'this',
-               path: path.resolve(__dirname, 'dist'),
-               filename: '<%%= pkg.name %%>.js',
-            },
-            // Let wepback recognize both javascript and typescript files
-            resolve: {
-               extensions: [ '.js', '.ts' ],
-            },
-            // This enables tree shaking by telling webpack that no files in our project
-            // contain side effects, allowing it to remove any code that is not imported.
-            // If we do eventually have a file that has side effects, we'd add the paths
-            // to those files here.
-            optimization: {
-               sideEffects: false,
-            },
-            module: {
-               rules: [
-                  // all files with a `.ts` extension will be handled by `ts-loader`
-                  {
-                     test: /\.ts$/,
-                     loader: 'ts-loader',
-                     options: {
-                        configFile: config.ts.configs.esm,
-                     },
-                  },
-               ],
-            },
-            mode: ENVIRONMENT === 'prd' ? 'production' : 'development',
+         <%_ if (isBrowser) { _%>
+         webpackUMD: {
+            cmd: `${config.ts.webpackCommand} ${config.entryFile} ${ENVIRONMENT === 'prd' ? '--env.production' : ''}`,
          },
+         <%_ } _%>
       },
-      <%_ } _%>
       <%_ if (isLibrary) { %>
       clean: {
          dist: config.out.dist,
@@ -144,7 +103,7 @@ module.exports = (grunt) => {
       },
       <%_ } _%>
       <%_ if (isBrowser && isLibrary) { %>
-      watch: {<%# TODO: Use webpack-dev-server instead of watch for webpack bundle #%>
+      watch: {
          ts: {
             files: [ config.ts.src ],
             tasks: [ 'build' ],
@@ -167,9 +126,6 @@ module.exports = (grunt) => {
    grunt.loadNpmTasks('grunt-concurrent');
    grunt.loadNpmTasks('grunt-contrib-watch');
    <%_ } _%>
-   <%_ if (isBrowser) { _%>
-   grunt.loadNpmTasks('grunt-webpack');
-   <%_ } _%>
 
    grunt.registerTask('standards', [ 'eslint', 'exec:standards' ]);
    grunt.registerTask('default', [ 'standards' ]);
@@ -181,7 +137,7 @@ module.exports = (grunt) => {
    grunt.registerTask('build-ts-outputs', 'concurrent:build-ts-outputs');
    <%_ } _%>
    <%_ if (isBrowser) { %>
-   grunt.registerTask('build-umd', 'webpack:umd');
+   grunt.registerTask('build-umd', 'exec:webpackUMD');
    <%_ } _%>
    <%_ if (isLibrary && isBrowser) { %>
    grunt.registerTask('build', [ 'concurrent:build' ]);

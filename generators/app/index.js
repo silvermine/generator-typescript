@@ -45,6 +45,9 @@ module.exports = class extends Generator {
       this._copyTemplate([ 'README.md' ]);
       this._copyTemplate([ '.gitignore' ]);
       this._copyTemplate([ '.npmignore' ]);
+      if (this.answers.isBrowser) {
+         this._copyTemplate([ 'webpack.config.js' ]);
+      }
       if (this.answers.isOpenSource) {
          this._copyTemplate([ 'LICENSE' ]);
       }
