@@ -9,6 +9,9 @@
       ".ts",
       ".js"
    ],
+   "require": [
+      "ts-node/register"
+   ],
    "reporter": [
       "text-summary",
       "html",
