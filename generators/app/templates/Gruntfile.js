@@ -39,9 +39,11 @@ module.exports = (grunt) => {
             types: 'src/tsconfig.types.json',
             <%_ } _%>
          },
-         tscCommand: './node_modules/.bin/tsc',
+      },
+      commands: {
+         tsc: './node_modules/.bin/tsc',
          <%_ if (isBrowser) { %>
-         webpackCommand: './node_modules/.bin/webpack',
+         webpack: './node_modules/.bin/webpack',
          <%_ } _%>
       },
       <%_ if (isLibrary) { _%>
@@ -65,26 +67,26 @@ module.exports = (grunt) => {
             failOnError: true,
          },
          standards: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.standards} --pretty`,
+            cmd: `${config.commands.tsc} -p ${config.ts.configs.standards} --pretty`,
          },
          <%_ if (isLibrary) { _%>
          types: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.types} --pretty`,
+            cmd: `${config.commands.tsc} -p ${config.ts.configs.types} --pretty`,
          },
          esm: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm} --pretty`,
+            cmd: `${config.commands.tsc} -p ${config.ts.configs.esm} --pretty`,
          },
          commonjs: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.commonjs} --pretty`,
+            cmd: `${config.commands.tsc} -p ${config.ts.configs.commonjs} --pretty`,
          },
          <%_ } else if (isBrowser) { _%>
          esm: {
-            cmd: `${config.ts.tscCommand} -p ${config.ts.configs.esm} --pretty`,
+            cmd: `${config.commands.tsc} -p ${config.ts.configs.esm} --pretty`,
          },
          <%_ } _%>
          <%_ if (isBrowser) { _%>
          webpackUMD: {
-            cmd: `${config.ts.webpackCommand} ${config.entryFile} ${ENVIRONMENT === 'prd' ? '--env.production' : ''}`,
+            cmd: `${config.commands.webpack} ${config.entryFile} ${ENVIRONMENT === 'prd' ? '--env.production' : ''}`,
          },
          <%_ } _%>
       },
