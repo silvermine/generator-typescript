@@ -20,8 +20,12 @@ module.exports = function(env) {
       output: {
          <%_ if (isLibrary) { _%>
          // The name of the global variable that will be exported when the UMD
-         // bundle is executed
+         // bundle is executed.
          library: '<%= globalVarName %>',
+         // Use this config property when using `export default` in the entry file, (which
+         // you only need to do if the main variable your library exports is a function,
+         // rather than an object):
+         // libraryExport: 'default'
          libraryTarget: 'umd',
          <%_ } _%>
          // Use `this` instead of `window` as the global variable that the UMD
