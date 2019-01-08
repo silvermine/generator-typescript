@@ -1,5 +1,9 @@
 {
+   <%_ if (isBrowser) { _%>
+   "extends": "@silvermine/typescript-config/browser/tsconfig.types.json",
+   <%_ } else { _%>
    "extends": "@silvermine/typescript-config/tsconfig.types.json",
+   <%_ } _%>
    "compilerOptions": {
       "outDir": "../dist/types/"
    }
