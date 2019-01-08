@@ -20,6 +20,9 @@ module.exports = (grunt) => {
       entryFile: './src/index.ts',
       js: {
          gruntFile: 'Gruntfile.js',
+         <%_ if (isBrowser) { _%>
+         webpackConfig: 'webpack.config.js',
+         <%_ } _%>
          all: [
             'Gruntfile.js',
             './src/**/*.js',
@@ -111,6 +114,10 @@ module.exports = (grunt) => {
          ts: {
             files: [ config.ts.src ],
             tasks: [ 'build' ],
+         },
+         webpackConfig: {
+            files: [ config.js.webpackConfig ],
+            tasks: [ 'build-umd' ],
          },
          <%_ } else { _%>
          ts: {
