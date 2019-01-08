@@ -19,6 +19,7 @@ module.exports = (grunt) => {
    config = {
       entryFile: './src/index.ts',
       js: {
+         gruntFile: 'Gruntfile.js',
          all: [
             'Gruntfile.js',
             './src/**/*.js',
@@ -104,18 +105,24 @@ module.exports = (grunt) => {
          <%_ } _%>
       },
       <%_ } _%>
-      <%_ if (isBrowser && isLibrary) { %>
+      <%_ if (isLibrary) { %>
       watch: {
+         <%_ if (isBrowser) { _%>
          ts: {
             files: [ config.ts.src ],
             tasks: [ 'build' ],
          },
-      },
-      <%_ } else if (isLibrary) { %>
-      watch: {
+         <%_ } else { _%>
          ts: {
             files: [ config.ts.src ],
             tasks: [ 'build-ts-outputs' ],
+         },
+         <%_ } _%>
+         gruntFile: {
+            files: [ config.js.gruntFile ],
+            options: {
+               reload: true,
+            },
          },
       },
       <%_ } %>
