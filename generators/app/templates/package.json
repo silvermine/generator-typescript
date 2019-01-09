@@ -23,7 +23,7 @@
    "homepage": "https://github.com/silvermine/<%= projectName %>#readme",
    <%_ } _%>
    "engines": {
-      "node": ">=6.0"
+      "node": ">=8.0"
    },
    "devDependencies": {
       "@silvermine/chai-strictly-equal": "1.0.0",
