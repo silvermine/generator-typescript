@@ -20,7 +20,7 @@
       "yeoman-generator"
    ],
    "devDependencies": {
-      "@silvermine/eslint-config": "2.0.0-preview.1",
+      "@silvermine/eslint-config": "2.0.0-rc2",
       "eslint": "5.4.0",
       "grunt": "1.0.3",
       "grunt-eslint": "21.0.0"

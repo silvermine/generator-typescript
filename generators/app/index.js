@@ -10,11 +10,12 @@ const Generator = require('yeoman-generator'),
 module.exports = class extends Generator {
 
    prompting() {
-      this.log(yosay(`Let's generate a ${ chalk.red('TypeScript')} project!`));
+      this.log(yosay(`Let's generate a ${chalk.red('TypeScript')} project!`));
 
-      return this.prompt(prompts({ folderName: this._getFolderName() })).then(answers => {
-         this.answers = _.extend({}, answers);
-      });
+      return this.prompt(prompts({ folderName: this._getFolderName() }))
+         .then((answers) => {
+            this.answers = _.extend({}, answers);
+         });
    }
 
    _getFolderName() {
