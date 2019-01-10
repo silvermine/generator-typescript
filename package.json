@@ -3,6 +3,7 @@
    "version": "0.9.0",
    "author": "Jeremy Thomerson",
    "license": "MIT",
+   "description": "A Yeoman generator for creating back-end and front-end TypeScript projects with out-of-the-box build, test, and linting configuration.",
    "repository": {
       "type": "git",
       "url": "git+https://github.com/silvermine/generator-typescript.git"
