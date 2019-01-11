@@ -20,6 +20,10 @@
       "typescript",
       "yeoman-generator"
    ],
+   "engines": {
+      "node": ">=8.10.0",
+      "npm": "6.4.1"
+   },
    "devDependencies": {
       "@silvermine/eslint-config": "2.0.0-rc2",
       "eslint": "5.4.0",
