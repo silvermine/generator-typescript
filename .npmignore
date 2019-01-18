@@ -29,3 +29,6 @@ npm-debug.log
 # NYC
 .nyc_output
 
+# We need to include everything in the template, even if we would normally not
+# publish it to npm
+!generators/app/templates/**/*
