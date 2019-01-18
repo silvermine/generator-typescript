@@ -42,11 +42,11 @@ module.exports = class extends Generator {
 
    _generateProjectConfigFiles() {
       this._generatePackageJSON();
-      this._copyTemplate([ '.eslintrc.json' ]);
+      this._copyTemplate([ '_eslintrc.json' ], [ '.eslintrc.json' ]);
       this._copyTemplate([ 'README.md' ]);
-      this._copyTemplate([ '.gitignore' ]);
-      this._copyTemplate([ '.npmignore' ]);
-      this._copyTemplate([ '.nvmrc' ]);
+      this._copyTemplate([ '_gitignore' ], [ '.gitignore' ]);
+      this._copyTemplate([ '_npmignore' ], [ '.npmignore' ]);
+      this._copyTemplate([ '_nvmrc' ], [ '.nvmrc' ]);
       if (this.answers.isBrowser) {
          this._copyTemplate([ 'webpack.config.js' ]);
       }
@@ -67,9 +67,9 @@ module.exports = class extends Generator {
    _generateTests() {
       this._copyTemplate([ 'tests', 'index.test.ts' ]);
       this._copyTemplate([ 'tests', 'setup', 'before.ts' ]);
-      this._copyTemplate([ 'tests', '.eslintrc.json' ]);
-      this._copyTemplate([ '.mocha.opts' ]);
-      this._copyTemplate([ '.nycrc.json' ]);
+      this._copyTemplate([ 'tests', '_eslintrc.json' ], [ 'tests', '.eslintrc.json' ]);
+      this._copyTemplate([ '_mocha.opts' ], [ '.mocha.opts' ]);
+      this._copyTemplate([ '_nycrc.json' ], [ '.nycrc.json' ]);
    }
 
    _generateGruntfile() {
@@ -99,10 +99,10 @@ module.exports = class extends Generator {
       this._copyTemplate([ 'tests', 'tsconfig.json' ]);
    }
 
-   _copyTemplate(pathParts) {
+   _copyTemplate(pathParts, destinationPathParts) {
       this.fs.copyTpl(
          this.templatePath.apply(this, pathParts),
-         this.destinationPath.apply(this, pathParts),
+         this.destinationPath.apply(this, destinationPathParts || pathParts),
          this.answers
       );
    }
