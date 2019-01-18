@@ -1,15 +1,15 @@
 Gruntfile.js
-tests/**
+/tests/**
 
 # Coverage directory used by tools like istanbul
 coverage/**
 
 # Config files
-.eslintrc.json
-.eslintignore
-.mocha.opts
-.nycrc.json
-.travis.yml
+/.eslintrc.json
+/.eslintignore
+/.mocha.opts
+/.nycrc.json
+/.travis.yml
 
 # Logs
 logs
@@ -28,4 +28,3 @@ npm-debug.log
 
 # NYC
 .nyc_output
-

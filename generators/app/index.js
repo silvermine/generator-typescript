@@ -45,7 +45,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '.eslintrc.json' ]);
       this._copyTemplate([ 'README.md' ]);
       this._copyTemplate([ '.gitignore' ]);
-      this._copyTemplate([ '.npmignore' ]);
+      this._copyTemplate([ 'npmignore-template' ], [ '.npmignore' ]);
       this._copyTemplate([ '.nvmrc' ]);
       if (this.answers.isBrowser) {
          this._copyTemplate([ 'webpack.config.js' ]);
@@ -99,10 +99,10 @@ module.exports = class extends Generator {
       this._copyTemplate([ 'tests', 'tsconfig.json' ]);
    }
 
-   _copyTemplate(pathParts) {
+   _copyTemplate(pathParts, destPathParts) {
       this.fs.copyTpl(
          this.templatePath.apply(this, pathParts),
-         this.destinationPath.apply(this, pathParts),
+         this.destinationPath.apply(this, destPathParts || pathParts),
          this.answers
       );
    }
