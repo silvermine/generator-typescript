@@ -57,6 +57,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '_gitignore' ], [ '.gitignore' ]);
       this._copyTemplate([ '_npmignore' ], [ '.npmignore' ]);
       this._copyTemplate([ '_nvmrc' ], [ '.nvmrc' ]);
+      this._copyTemplate([ '_travis.yml' ], [ '.travis.yml' ]);
       if (this.answers.isBrowser) {
          this._copyTemplate([ 'webpack.config.js' ]);
       }
