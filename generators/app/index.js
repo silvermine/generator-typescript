@@ -38,6 +38,16 @@ module.exports = class extends Generator {
 
    install() {
       this.npmInstall();
+      this._installLatestVersionOfDependencies();
+   }
+
+   _installLatestVersionOfDependencies() {
+      const LATEST_DEV_DEPS = [
+         '@silvermine/eslint-config@latest',
+         '@silvermine/typescript-config@latest',
+      ];
+
+      this.npmInstall(LATEST_DEV_DEPS, { 'save-dev': true, 'save-exact': true });
    }
 
    _generateProjectConfigFiles() {
