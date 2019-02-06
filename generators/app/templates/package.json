@@ -8,7 +8,7 @@
    "module": "./dist/esm/index",
    <%_ } _%>
    "scripts": {
-      "test": "TS_NODE_PROJECT='tests/tsconfig.json' nyc mocha --opts ./.mocha.opts"
+      "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts"
    },
    "author": "<%= author %>",
    "license": "<%= isOpenSource ? 'MIT' : 'PROPRIETARY' %>",
@@ -27,7 +27,7 @@
       "npm": "6.4.1"
    },
    "devDependencies": {
-      "@silvermine/chai-strictly-equal": "1.0.0",
+      "@silvermine/chai-strictly-equal": "1.1.0",
       "@types/chai": "4.1.7",
       "@types/mocha": "5.2.5",
       "@types/node": "8.10.36",

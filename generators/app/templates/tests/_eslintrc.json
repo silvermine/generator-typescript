@@ -1,14 +1,5 @@
 {
 
-   "extends": "@silvermine/eslint-config/node-tests",
-
-   "overrides": [
-      {
-         "files": [ "**/*.ts" ],
-         "rules": {
-            "typescript/explicit-function-return-type": [ "error", { "allowExpressions": true } ]
-         }
-      }
-   ]
+   "extends": "@silvermine/eslint-config/node-tests"
 
 }
