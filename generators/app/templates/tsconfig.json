@@ -1,7 +1,11 @@
 {
    <%_ if (isBrowser) { _%>
-   "extends": "@silvermine/typescript-config/browser/tsconfig.json"
+   "extends": "@silvermine/typescript-config/browser/tsconfig.json",
    <%_ } else { _%>
-   "extends": "@silvermine/typescript-config/tsconfig.json"
+   "extends": "@silvermine/typescript-config/tsconfig.json",
    <%_ } _%>
+   "include": [
+      "src/**/*",
+      "test/**/*"
+   ]
 }
