@@ -84,7 +84,10 @@ module.exports = class extends Generator {
    }
 
    _generateGruntfile() {
-      this._copyTemplate([ 'Gruntfile.js' ]);
+      let environment = this.answers.isBrowser ? 'browser' : 'node',
+          type = this.answers.isLibrary ? 'lib' : 'project';
+
+      this._copyTemplate([ 'gruntfiles', `Gruntfile-${environment}-${type}.js` ], [ 'Gruntfile.js' ]);
    }
 
    _addTsConfigFiles() {
