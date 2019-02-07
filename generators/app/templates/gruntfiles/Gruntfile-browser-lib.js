@@ -90,6 +90,7 @@ module.exports = (grunt) => {
          'build-ts-outputs': [ 'build-types', 'build-esm', 'build-commonjs' ],
          'build': [ 'build-ts-outputs', 'build-umd' ],
       },
+
       watch: {
          ts: {
             files: [ config.ts.src ],
