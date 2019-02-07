@@ -104,7 +104,7 @@ module.exports = (grunt) => {
    grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
    grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
 
-   grunt.registerTask('build-umd', 'exec:webpackUMD');
+   grunt.registerTask('build-umd', [ 'exec:webpackUMD' ]);
    grunt.registerTask('build', [ 'build-umd' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
