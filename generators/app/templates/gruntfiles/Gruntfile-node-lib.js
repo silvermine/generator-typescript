@@ -98,14 +98,14 @@ module.exports = (grunt) => {
 
    grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
    grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
-   grunt.registerTask('default', [ 'standards' ]);
 
    grunt.registerTask('build-types', 'exec:types');
    grunt.registerTask('build-esm', 'exec:esm');
    grunt.registerTask('build-commonjs', 'exec:commonjs');
    grunt.registerTask('build-ts-outputs', 'concurrent:build-ts-outputs');
-
    grunt.registerTask('build', [ 'concurrent:build-ts-outputs' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
+
+   grunt.registerTask('default', [ 'standards' ]);
 };

@@ -79,7 +79,8 @@ module.exports = (grunt) => {
 
    grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
    grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
-   grunt.registerTask('default', [ 'standards' ]);
 
    grunt.registerTask('develop', [ 'watch' ]);
+
+   grunt.registerTask('default', [ 'standards' ]);
 };

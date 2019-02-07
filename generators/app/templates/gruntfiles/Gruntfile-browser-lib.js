@@ -116,7 +116,6 @@ module.exports = (grunt) => {
 
    grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
    grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
-   grunt.registerTask('default', [ 'standards' ]);
 
    grunt.registerTask('build-types', 'exec:types');
    grunt.registerTask('build-esm', 'exec:esm');
@@ -126,4 +125,6 @@ module.exports = (grunt) => {
    grunt.registerTask('build', [ 'concurrent:build' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
+
+   grunt.registerTask('default', [ 'standards' ]);
 };
