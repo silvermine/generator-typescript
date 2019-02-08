@@ -25,7 +25,7 @@ mkdir node-lib
 cd node-lib
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeLib --isBackEnd=true --isLibrary=true --isOpenSource=true
 grunt standards
-grunt build
+grunt clean build
 npm test
 cd ../
 
@@ -50,7 +50,7 @@ mkdir front-end-library
 cd front-end-library
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndLibrary --isBackEnd=false --isLibrary=true --globalVarName=fel --isOpenSource=true
 grunt standards
-grunt build
+grunt clean build
 npm test
 cd ../
 
@@ -63,4 +63,5 @@ mkdir front-end-project
 cd front-end-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndProject --isBackEnd=false --isLibrary=false --isOpenSource=true
 grunt standards
+grunt clean build
 npm test
