@@ -4,6 +4,9 @@
    "author": "Jeremy Thomerson",
    "license": "MIT",
    "description": "A Yeoman generator for creating back-end and front-end TypeScript projects with out-of-the-box build, test, and linting configuration.",
+   "scripts": {
+      "test": "./tests/scripts/integration-test.sh"
+   },
    "repository": {
       "type": "git",
       "url": "git+https://github.com/silvermine/generator-typescript.git"
@@ -27,12 +30,14 @@
    "devDependencies": {
       "@silvermine/eslint-config": "2.0.0-rc4",
       "grunt": "1.0.3",
-      "grunt-eslint": "21.0.0"
+      "grunt-eslint": "21.0.0",
+      "yo": "2.0.5"
    },
    "dependencies": {
       "chalk": "2.1.0",
       "underscore": "1.9.1",
       "yeoman-generator": "3.1.1",
+      "yeoman-option-or-prompt": "2.0.1",
       "yosay": "2.0.1"
    }
 }

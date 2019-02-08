@@ -1,6 +1,7 @@
 'use strict';
 
-const Generator = require('yeoman-generator'),
+const optionOrPrompt = require('yeoman-option-or-prompt'),
+      Generator = require('yeoman-generator'),
       prompts = require('./prompts'),
       chalk = require('chalk'),
       yosay = require('yosay'),
@@ -12,7 +13,7 @@ module.exports = class extends Generator {
    prompting() {
       this.log(yosay(`Let's generate a ${chalk.red('TypeScript')} project!`));
 
-      return this.prompt(prompts({ folderName: this._getFolderName() }))
+      return optionOrPrompt.call(this, prompts({ folderName: this._getFolderName() }))
          .then((answers) => {
             this.answers = _.extend({}, answers);
          });
