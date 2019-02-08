@@ -12,6 +12,9 @@ script:
    - node --version
    - npm --version
    - grunt standards
+<%_ if (isLibrary || isBrowser) { _%>
+   - grunt clean build
+<%_ } _%>
    - npm test
 
 # For code coverage:
