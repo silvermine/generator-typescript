@@ -41,6 +41,12 @@ module.exports = (grunt) => {
 
       eslint: {
          target: [ ...config.js.all, ...config.ts.all ],
+         fix: {
+            src: [ ...config.js.all, ...config.ts.all ],
+            options: {
+               fix: true,
+            },
+         },
       },
 
       exec: {
@@ -90,15 +96,16 @@ module.exports = (grunt) => {
    grunt.loadNpmTasks('grunt-concurrent');
    grunt.loadNpmTasks('grunt-contrib-watch');
 
-   grunt.registerTask('standards', [ 'eslint', 'exec:standards' ]);
-   grunt.registerTask('default', [ 'standards' ]);
+   grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
+   grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
 
-   grunt.registerTask('build-types', 'exec:types');
-   grunt.registerTask('build-esm', 'exec:esm');
-   grunt.registerTask('build-commonjs', 'exec:commonjs');
-   grunt.registerTask('build-ts-outputs', 'concurrent:build-ts-outputs');
-
+   grunt.registerTask('build-types', [ 'exec:types' ]);
+   grunt.registerTask('build-esm', [ 'exec:esm' ]);
+   grunt.registerTask('build-commonjs', [ 'exec:commonjs' ]);
+   grunt.registerTask('build-ts-outputs', [ 'concurrent:build-ts-outputs' ]);
    grunt.registerTask('build', [ 'concurrent:build-ts-outputs' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
+
+   grunt.registerTask('default', [ 'standards' ]);
 };
