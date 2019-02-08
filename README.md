@@ -1,7 +1,8 @@
 # Silvermine TypeScript Project Yeoman Generator
 
+[![NPM Version](https://img.shields.io/npm/v/@silvermine/generator-typescript.svg)](https://travis-ci.com/silvermine/generator-typescript)
+[![License](https://img.shields.io/github/license/silvermine/generator-typescript.svg)](./LICENSE)
 [![Build Status](https://travis-ci.com/silvermine/generator-typescript.svg?branch=master)](https://travis-ci.com/silvermine/generator-typescript)
-[![Coverage Status](https://coveralls.io/repos/github/silvermine/generator-typescript/badge.svg?branch=master)](https://coveralls.io/github/silvermine/generator-typescript?branch=master)
 [![Dependency Status](https://david-dm.org/silvermine/generator-typescript.svg)](https://david-dm.org/silvermine/generator-typescript)
 [![Dev Dependency Status](https://david-dm.org/silvermine/generator-typescript/dev-status.svg)](https://david-dm.org/silvermine/generator-typescript#info=devDependencies&view=table)
 
