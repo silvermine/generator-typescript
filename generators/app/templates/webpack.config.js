@@ -38,7 +38,7 @@ module.exports = function(env) {
          path: DIST,
          filename: `${getFileNameFromPackageName(pkg.name)}.js`,
       },
-      // Let wepback recognize both javascript and typescript files
+      // Let webpack recognize both javascript and typescript files
       resolve: {
          extensions: [ '.js', '.ts' ],
       },
