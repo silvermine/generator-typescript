@@ -1,7 +1,7 @@
 # <%= projectName %>
 
 <%_ if (isOpenSource) { _%>
-[![NPM Version](https://img.shields.io/npm/v/@silvermine/<%= projectName %>.svg)](https://travis-ci.com/silvermine/<%= projectName %>)
+[![NPM Version](https://img.shields.io/npm/v/@silvermine/<%= projectName %>.svg)](https://www.npmjs.com/package/@silvermine/<%= projectName %>)
 [![License](https://img.shields.io/github/license/silvermine/<%= projectName %>.svg)](./LICENSE)
 [![Build Status](https://travis-ci.com/silvermine/<%= projectName %>.svg?branch=master)](https://travis-ci.com/silvermine/<%= projectName %>)
 [![Coverage Status](https://coveralls.io/repos/github/silvermine/<%= projectName %>/badge.svg?branch=master)](https://coveralls.io/github/silvermine/<%= projectName %>?branch=master)
