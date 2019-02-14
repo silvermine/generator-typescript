@@ -1,6 +1,6 @@
 {
    "name": "<%_ if (isOpenSource) { _%>@silvermine/<%_ } _%><%= projectName %>",
-   "version": "0.9.0",
+   "version": "0.1.0",
    "description": "",
    <%_ if (isLibrary) { _%>
    "main": "./dist/commonjs/index",
