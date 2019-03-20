@@ -51,9 +51,9 @@
       "nyc": "13.3.0",
       "sinon": "5.1.1",
       "source-map-support": "0.5.9",
-<%_ if (!isLibrary) { _%>
+      <%_ if (!isLibrary) { _%>
       "tslib": "1.9.3",
-<%_ } _%>
+      <%_ } _%>
       "ts-node": "7.0.1",
       <%_ if (isBrowser) { _%>
       "ts-loader": "5.3.0",
@@ -64,8 +64,8 @@
       <%_ } _%>
    },
    "dependencies": {
-<%_ if (isLibrary) { _%>
+      <%_ if (isLibrary) { _%>
       "tslib": "1.9.3"
-<%_ } _%>
+      <%_ } _%>
    }
  }
