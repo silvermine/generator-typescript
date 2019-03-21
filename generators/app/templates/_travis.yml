@@ -12,6 +12,7 @@ script:
    - node --version
    - npm --version
    - grunt standards
+   - commitlint-travis
 <%_ if (isLibrary || isBrowser) { _%>
    - grunt clean build
 <%_ } _%>

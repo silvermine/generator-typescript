@@ -7,6 +7,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/silvermine/<%= projectName %>/badge.svg?branch=master)](https://coveralls.io/github/silvermine/<%= projectName %>?branch=master)
 [![Dependency Status](https://david-dm.org/silvermine/<%= projectName %>.svg)](https://david-dm.org/silvermine/<%= projectName %>)
 [![Dev Dependency Status](https://david-dm.org/silvermine/<%= projectName %>/dev-status.svg)](https://david-dm.org/silvermine/<%= projectName %>#info=devDependencies&view=table)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 <%_ } _%>
 ## What?
