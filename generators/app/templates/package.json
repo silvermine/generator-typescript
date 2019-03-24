@@ -8,6 +8,9 @@
    "module": "./dist/esm/index",
    <%_ } _%>
    "scripts": {
+      <%_ if (isLibrary || isBrowser) { _%>
+      "prepare": "grunt build",
+      <%_ } _%>
       "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts"
    },
    "author": "<%= author %>",
