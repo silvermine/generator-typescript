@@ -29,7 +29,7 @@
    },
    "devDependencies": {
       "@silvermine/eslint-config": "2.0.0-rc4",
-      "grunt": "1.0.3",
+      "grunt": "1.0.4",
       "grunt-eslint": "21.0.0",
       "yo": "2.0.5"
    },
