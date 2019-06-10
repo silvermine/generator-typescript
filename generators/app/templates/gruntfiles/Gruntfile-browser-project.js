@@ -18,7 +18,7 @@ module.exports = (grunt) => {
          gruntFile: 'Gruntfile.js',
          webpackConfig: 'webpack.config.js',
          all: [
-            'Gruntfile.js',
+            './*.js',
             './src/**/*.js',
             './tests/**/*.js',
          ],
@@ -26,6 +26,7 @@ module.exports = (grunt) => {
       ts: {
          src: './src/**/*.ts',
          all: [
+            './*.ts',
             './src/**/*.ts',
             './tests/**/*.ts',
          ],
