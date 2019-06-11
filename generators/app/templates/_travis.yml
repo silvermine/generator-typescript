@@ -16,7 +16,7 @@ script:
 <%_ if (isLibrary || isBrowser) { _%>
    - grunt clean build
 <%_ } _%>
-   - npm test
+   - npm run test:ci
 
 # For code coverage:
 after_success:

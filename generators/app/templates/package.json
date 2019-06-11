@@ -11,7 +11,8 @@
       <%_ if (isLibrary || isBrowser) { _%>
       "prepare": "grunt build",
       <%_ } _%>
-      "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts"
+      "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
+      "test:ci": "npm test -- --forbid-only"
    },
    "author": "<%= author %>",
    "license": "<%= isOpenSource ? 'MIT' : 'PROPRIETARY' %>",
