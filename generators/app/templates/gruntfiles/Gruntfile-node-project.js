@@ -8,7 +8,7 @@ module.exports = (grunt) => {
       js: {
          gruntFile: 'Gruntfile.js',
          all: [
-            'Gruntfile.js',
+            './*.js',
             './src/**/*.js',
             './tests/**/*.js',
          ],
@@ -16,6 +16,7 @@ module.exports = (grunt) => {
       ts: {
          src: './src/**/*.ts',
          all: [
+            './*.ts',
             './src/**/*.ts',
             './tests/**/*.ts',
          ],
