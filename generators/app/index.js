@@ -38,8 +38,11 @@ module.exports = class extends Generator {
    }
 
    install() {
-      this.npmInstall();
+      // We must call `_installLatestVersionOfDependencies` **before** `npmInstall` so
+      // that the dependencies added in `_installLatestVersionOfDependencies` are
+      // installed when the npm scripts triggered by `npmInstall` run.
       this._installLatestVersionOfDependencies();
+      this.npmInstall();
    }
 
    _installLatestVersionOfDependencies() {
