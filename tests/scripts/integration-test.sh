@@ -27,6 +27,7 @@ cd node-lib
 grunt standards
 grunt clean build
 npm test
+npm run test:ci
 cd ../
 
 # Node.js Non-Library Project
@@ -39,6 +40,7 @@ cd node-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeProject --isBackEnd=true --isLibrary=false --isOpenSource=false --force-install
 grunt standards
 npm test
+npm run test:ci
 cd ../
 
 # Front-End Library
@@ -52,6 +54,7 @@ cd front-end-library
 grunt standards
 grunt clean build
 npm test
+npm run test:ci
 cd ../
 
 # Front-End Non-Library Project
@@ -65,3 +68,4 @@ cd front-end-project
 grunt standards
 grunt clean build
 npm test
+npm run test:ci
