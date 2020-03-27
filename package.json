@@ -24,17 +24,17 @@
       "yeoman-generator"
    ],
    "devDependencies": {
-      "@silvermine/eslint-config": "2.0.0-rc4",
+      "@silvermine/eslint-config": "3.0.0-rc.0",
       "check-node-version": "4.0.2",
-      "grunt": "1.0.4",
-      "grunt-eslint": "21.0.0",
-      "yo": "2.0.5"
+      "grunt": "1.1.0",
+      "grunt-eslint": "22.0.0",
+      "yo": "3.1.1"
    },
    "dependencies": {
-      "chalk": "2.1.0",
+      "chalk": "3.0.0",
       "underscore": "1.9.1",
-      "yeoman-generator": "3.1.1",
+      "yeoman-generator": "4.7.2",
       "yeoman-option-or-prompt": "2.0.1",
-      "yosay": "2.0.1"
+      "yosay": "2.0.2"
    }
 }
