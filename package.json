@@ -5,7 +5,7 @@
    "license": "MIT",
    "description": "A Yeoman generator for creating back-end and front-end TypeScript projects with out-of-the-box build, test, and linting configuration.",
    "scripts": {
-      "test": "./tests/scripts/integration-test.sh"
+      "test": "check-node-version --npm 6.13.4 && ./tests/scripts/integration-test.sh"
    },
    "repository": {
       "type": "git",
@@ -23,12 +23,9 @@
       "typescript",
       "yeoman-generator"
    ],
-   "engines": {
-      "node": ">=8.10.0",
-      "npm": "6.4.1"
-   },
    "devDependencies": {
       "@silvermine/eslint-config": "2.0.0-rc4",
+      "check-node-version": "4.0.2",
       "grunt": "1.0.4",
       "grunt-eslint": "21.0.0",
       "yo": "2.0.5"

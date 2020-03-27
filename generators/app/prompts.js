@@ -6,7 +6,7 @@ module.exports = (config) => {
          type: 'input',
          name: 'projectName',
          message: 'What is your project\'s name?',
-         'default': () => config.folderName,
+         'default': () => { return config.folderName; },
       },
       {
          type: 'confirm',
@@ -24,13 +24,13 @@ module.exports = (config) => {
          type: 'input',
          name: 'globalVarName',
          message: 'What is the name of the global variable you want this library to expose on `window`?',
-         when: (context) => !context.isBackEnd && context.isLibrary,
+         when: (context) => { return !context.isBackEnd && context.isLibrary; },
       },
       {
          type: 'confirm',
          name: 'isOpenSource',
          message: 'Will this project be open source?',
-         'default': (context) => context.isLibrary,
+         'default': (context) => { return context.isLibrary; },
       },
    ];
 };
