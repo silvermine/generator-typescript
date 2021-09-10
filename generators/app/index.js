@@ -6,7 +6,8 @@ const optionOrPrompt = require('yeoman-option-or-prompt'),
       chalk = require('chalk'),
       yosay = require('yosay'),
       path = require('path'),
-      _ = require('underscore');
+      _ = require('underscore'),
+      fs = require('fs');
 
 module.exports = class extends Generator {
 
@@ -45,9 +46,15 @@ module.exports = class extends Generator {
       this.npmInstall();
    }
 
+   end() {
+      // symlink files in dependency directories
+      this._symlinkFiles();
+   }
+
    _installLatestVersionOfDependencies() {
       const LATEST_DEV_DEPS = [
          '@silvermine/eslint-config@latest',
+         '@silvermine/standardization@latest',
          '@silvermine/typescript-config@latest',
       ];
 
@@ -62,6 +69,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '_npmignore' ], [ '.npmignore' ]);
       this._copyTemplate([ '_nvmrc' ], [ '.nvmrc' ]);
       this._copyTemplate([ '_travis.yml' ], [ '.travis.yml' ]);
+      this._copyTemplate([ '_markdownlint.json' ], [ '.markdownlint.json' ]);
       this._copyTemplate([ 'commitlint.config.js' ]);
 
       if (this.answers.isBrowser) {
@@ -117,6 +125,20 @@ module.exports = class extends Generator {
       this._copyTemplate([ 'tsconfig.json' ]);
       // Add tsconfig for tests
       this._copyTemplate([ 'tests', 'tsconfig.json' ]);
+   }
+
+   _symlinkFiles() {
+      const targetDirectory = process.cwd();
+
+      // Symlink the editorconfig file direct to the one in @silvermine/standardization
+      fs.symlink(
+         `${targetDirectory}/node_modules/@silvermine/standardization/.editorconfig`,
+         `${targetDirectory}/.editorconfig`,
+         'file',
+         () => {
+            // fs.symlink requires a callback
+         }
+      );
    }
 
    _copyTemplate(pathParts, destinationPathParts) {
