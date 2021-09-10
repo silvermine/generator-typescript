@@ -13,6 +13,7 @@
       <%_ } _%>
       "test": "check-node-version --npm 6.14.12 && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
       "test:ci": "npm test -- --forbid-only",
+      "commitlint": "commitlint --from $(git rev-list --max-parents=0 HEAD | sed 1q)"
    },
    "author": "<%= author %>",
    "license": "<%= isOpenSource ? 'MIT' : 'PROPRIETARY' %>",
