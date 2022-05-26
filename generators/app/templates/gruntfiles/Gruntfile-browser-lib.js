@@ -1,7 +1,5 @@
 'use strict';
 
-var markdownlint = require('markdownlint');
-
 function getEnvironment(grunt) {
    const TYPES = [ 'prd', 'dev' ],
          env = grunt.option('env');
@@ -16,11 +14,6 @@ module.exports = (grunt) => {
 
    config = {
       entryFile: './src/index.ts',
-      docs: {
-         src: {
-            md: [ './README.md' ],
-         },
-      },
       js: {
          gruntFile: 'Gruntfile.js',
          webpackConfig: 'webpack.config.js',
@@ -57,16 +50,6 @@ module.exports = (grunt) => {
    grunt.initConfig({
 
       pkg: grunt.file.readJSON('package.json'),
-
-      eslint: {
-         target: [ ...config.js.all, ...config.ts.all ],
-         fix: {
-            src: [ ...config.js.all, ...config.ts.all ],
-            options: {
-               fix: true,
-            },
-         },
-      },
 
       exec: {
          options: {
@@ -115,27 +98,12 @@ module.exports = (grunt) => {
             },
          },
       },
-
-      markdownlint: {
-         all: {
-            src: [ ...config.docs.src.md ],
-            options: {
-               // eslint-disable-next-line no-sync
-               config: markdownlint.readConfigSync('.markdownlint.json'),
-            },
-         },
-      },
    });
 
-   grunt.loadNpmTasks('grunt-eslint');
    grunt.loadNpmTasks('grunt-exec');
    grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-concurrent');
    grunt.loadNpmTasks('grunt-contrib-watch');
-   grunt.loadNpmTasks('grunt-markdownlint');
-
-   grunt.registerTask('standards', [ 'eslint:target', 'exec:standards', 'markdownlint' ]);
-   grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
 
    grunt.registerTask('build-types', [ 'exec:types' ]);
    grunt.registerTask('build-esm', [ 'exec:esm' ]);
@@ -145,6 +113,4 @@ module.exports = (grunt) => {
    grunt.registerTask('build', [ 'concurrent:build' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
-
-   grunt.registerTask('default', [ 'standards' ]);
 };

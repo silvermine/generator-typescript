@@ -5,8 +5,14 @@
    "license": "MIT",
    "description": "A Yeoman generator for creating back-end and front-end TypeScript projects with out-of-the-box build, test, and linting configuration.",
    "scripts": {
-      "test": "check-node-version --npm 6.14.12 && ./tests/scripts/integration-test.sh",
-      "commitlint": "./node_modules/.bin/commitlint --from 3c68c07"
+      "test": "check-node-version --npm 8.5.5 && ./tests/scripts/integration-test.sh",
+      "commitlint": "./node_modules/.bin/commitlint --from 3c68c07",
+      "release:preview": "node ./node_modules/@silvermine/standardization/scripts/release.js preview",
+      "release:prep-changelog": "node ./node_modules/@silvermine/standardization/scripts/release.js prep-changelog",
+      "release:finalize": "node ./node_modules/@silvermine/standardization/scripts/release.js finalize",
+      "markdownlint": "markdownlint -c .markdownlint.json -i CHANGELOG.md '{,!(node_modules,tmp-tests)/**/}*.md'",
+      "eslint": "eslint '{,!(node_modules|dist|tmp-tests)/**/}*.{js,ts}'",
+      "standards": "npm run markdownlint && npm run eslint"
    },
    "repository": {
       "type": "git",
@@ -26,9 +32,8 @@
    ],
    "devDependencies": {
       "@silvermine/eslint-config": "3.0.0-rc.0",
-      "@silvermine/standardization": "1.2.0",
-      "grunt": "1.4.1",
-      "grunt-eslint": "22.0.0",
+      "@silvermine/standardization": "2.0.0",
+      "eslint": "6.8.0",
       "yo": "3.1.1"
    },
    "dependencies": {
