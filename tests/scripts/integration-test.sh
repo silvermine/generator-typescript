@@ -24,7 +24,7 @@ echo '-----------------------------------------'
 mkdir node-lib
 cd node-lib
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeLib --isBackEnd=true --isLibrary=true --isOpenSource=true --force-install
-grunt standards
+npm run standards
 grunt clean build
 npm test
 npm run test:ci
@@ -38,7 +38,7 @@ echo '-----------------------------------------'
 mkdir node-project
 cd node-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeProject --isBackEnd=true --isLibrary=false --isOpenSource=false --force-install
-grunt standards
+npm run standards
 npm test
 npm run test:ci
 cd ../
@@ -51,7 +51,7 @@ echo '-----------------------------------------'
 mkdir front-end-library
 cd front-end-library
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndLibrary --isBackEnd=false --isLibrary=true --globalVarName=fel --isOpenSource=true --force-install
-grunt standards
+npm run standards
 grunt clean build
 npm test
 npm run test:ci
@@ -65,7 +65,7 @@ echo '-----------------------------------------'
 mkdir front-end-project
 cd front-end-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndProject --isBackEnd=false --isLibrary=false --isOpenSource=true --force-install
-grunt standards
+npm run standards
 grunt clean build
 npm test
 npm run test:ci
