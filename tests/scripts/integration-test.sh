@@ -33,7 +33,7 @@ cd node-lib
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeLib --isBackEnd=true --isLibrary=true --isOpenSource=true --force-install
 commit
 npm run standards
-grunt clean build
+./node_modules/.bin/grunt clean build
 npm test
 npm run test:ci
 cd ../
@@ -62,7 +62,7 @@ cd front-end-library
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndLibrary --isBackEnd=false --isLibrary=true --globalVarName=fel --isOpenSource=true --force-install
 commit
 npm run standards
-grunt clean build
+./node_modules/.bin/grunt clean build
 npm test
 npm run test:ci
 cd ../
@@ -77,6 +77,6 @@ cd front-end-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndProject --isBackEnd=false --isLibrary=false --isOpenSource=true --force-install
 commit
 npm run standards
-grunt clean build
+./node_modules/.bin/grunt clean build
 npm test
 npm run test:ci
