@@ -2,6 +2,13 @@
 
 echo $PWD
 
+commit () {
+   git init
+   git config user.name "silvermine"
+   git config user.email "test@silvermine.com"
+   git add . && git commit -m 'chore: initial commit'
+}
+
 # Without this, `npm test` will keep re-trying this script indefinitely on failure
 set -o errexit
 
@@ -24,8 +31,7 @@ echo '-----------------------------------------'
 mkdir node-lib
 cd node-lib
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeLib --isBackEnd=true --isLibrary=true --isOpenSource=true --force-install
-git init
-git add . && git commit -m 'chore: initial commit'
+commit
 npm run standards
 grunt clean build
 npm test
@@ -40,8 +46,7 @@ echo '-----------------------------------------'
 mkdir node-project
 cd node-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=nodeProject --isBackEnd=true --isLibrary=false --isOpenSource=false --force-install
-git init
-git add . && git commit -m 'chore: initial commit'
+commit
 npm run standards
 npm test
 npm run test:ci
@@ -55,8 +60,7 @@ echo '-----------------------------------------'
 mkdir front-end-library
 cd front-end-library
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndLibrary --isBackEnd=false --isLibrary=true --globalVarName=fel --isOpenSource=true --force-install
-git init
-git add . && git commit -m 'chore: initial commit'
+commit
 npm run standards
 grunt clean build
 npm test
@@ -71,8 +75,7 @@ echo '-----------------------------------------'
 mkdir front-end-project
 cd front-end-project
 ../../node_modules/.bin/yo @silvermine/typescript --projectName=frontEndProject --isBackEnd=false --isLibrary=false --isOpenSource=true --force-install
-git init
-git add . && git commit -m 'chore: initial commit'
+commit
 npm run standards
 grunt clean build
 npm test
