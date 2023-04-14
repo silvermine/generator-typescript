@@ -68,7 +68,7 @@ module.exports = class extends Generator {
       this._copyTemplate([ '_gitignore' ], [ '.gitignore' ]);
       this._copyTemplate([ '_npmignore' ], [ '.npmignore' ]);
       this._copyTemplate([ '_nvmrc' ], [ '.nvmrc' ]);
-      this._copyTemplate([ '_travis.yml' ], [ '.travis.yml' ]);
+      this._copyTemplate([ '.github', 'workflows', '_ci.yml' ], [ '.github', 'workflows', 'ci.yml' ]);
       this._copyTemplate([ '_markdownlint.json' ], [ '.markdownlint.json' ]);
       this._copyTemplate([ 'commitlint.config.js' ]);
 
