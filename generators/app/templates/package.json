@@ -11,7 +11,8 @@
       <%_ if (isLibrary || isBrowser) { _%>
       "prepare": "grunt build",
       <%_ } _%>
-      "test": "check-node-version --npm 8.5.5 && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
+      "check-node-version": "check-node-version --npm 8.5.5",
+      "test": "npm run check-node-version TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
       "test:ci": "npm test -- --forbid-only",
       "release:preview": "node ./node_modules/@silvermine/standardization/scripts/release.js preview",
       "release:prep-changelog": "node ./node_modules/@silvermine/standardization/scripts/release.js prep-changelog",
@@ -19,7 +20,7 @@
       "commitlint": "commitlint --from $(git rev-list --max-parents=0 HEAD | sed 1q)",
       "markdownlint": "markdownlint -c .markdownlint.json -i CHANGELOG.md '{,!(node_modules)/**/}*.md'",
       "eslint": "eslint '{,!(node_modules|dist)/**/}*.js'",
-      "standards": "npm run markdownlint && npm run eslint"
+      "standards": "npm run commitlint && npm run markdownlint && npm run eslint"
    },
    "author": "<%= author %>",
    "license": "<%= isOpenSource ? 'MIT' : 'PROPRIETARY' %>",
@@ -34,22 +35,16 @@
    "homepage": "https://github.com/silvermine/<%= projectName %>#readme",
    <%_ } _%>
    "devDependencies": {
-      "@commitlint/cli": "8.3.5",
-      "@commitlint/config-conventional": "8.3.4",
-      <%_ if (isOpenSource) { _%>
-      "@commitlint/travis-cli": "8.3.5",
-      <%_ } _%>
       "@silvermine/chai-strictly-equal": "1.1.0",
-      "@silvermine/eslint-config": "3.0.0-rc.0",
-      "@silvermine/standardization": "2.0.0",
+      "@silvermine/eslint-config": "3.0.1",
+      "@silvermine/standardization": "2.1.1",
+      "@silvermine/typescript-config": "git+https://github.com/silvermine/typescript-config.git#23213e33077089e723629dead5342abe6f3b3c8c",
       "@types/chai": "4.1.7",
       "@types/mocha": "5.2.5",
-      "@types/node": "8.10.36",
+      "@types/node": "17.0.41",
       "@types/sinon": "5.0.5",
       "coveralls": "3.0.2",
       "chai": "4.2.0",
-      "check-node-version": "4.0.2",
-      "cz-conventional-changelog": "2.1.0",
       "eslint": "6.8.0",
       "grunt": "1.4.1",
       "grunt-cli": "1.3.2",
@@ -67,7 +62,6 @@
       "nyc": "13.3.0",
       "sinon": "5.1.1",
       "source-map-support": "0.5.16",
-      "standard-version": "7.1.0",
       <%_ if (!isLibrary) { _%>
       "tslib": "1.9.3",
       <%_ } _%>
@@ -75,7 +69,7 @@
       <%_ if (isBrowser) { _%>
       "ts-loader": "5.3.0",
       <%_ } _%>
-      "typescript": "3.2.2"<% if (isBrowser) { %>,
+      "typescript": "3.9.5"<% if (isBrowser) { %>,
       "webpack": "4.28.3",
       "webpack-cli": "3.2.0"
       <%_ } _%>
@@ -84,10 +78,5 @@
       <%_ if (isLibrary) { _%>
       "tslib": "1.9.3"
       <%_ } _%>
-   },
-   "config": {
-      "commitizen": {
-         "path": "./node_modules/cz-conventional-changelog"
-      }
    }
  }

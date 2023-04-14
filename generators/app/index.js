@@ -39,26 +39,12 @@ module.exports = class extends Generator {
    }
 
    install() {
-      // We must call `_installLatestVersionOfDependencies` **before** `npmInstall` so
-      // that the dependencies added in `_installLatestVersionOfDependencies` are
-      // installed when the npm scripts triggered by `npmInstall` run.
-      this._installLatestVersionOfDependencies();
       this.npmInstall();
    }
 
    end() {
       // symlink files in dependency directories
       this._symlinkFiles();
-   }
-
-   _installLatestVersionOfDependencies() {
-      const LATEST_DEV_DEPS = [
-         '@silvermine/eslint-config@latest',
-         '@silvermine/standardization@latest',
-         '@silvermine/typescript-config@latest',
-      ];
-
-      this.npmInstall(LATEST_DEV_DEPS, { 'save-dev': true, 'save-exact': true });
    }
 
    _generateProjectConfigFiles() {
