@@ -10,8 +10,6 @@ function getFileNameFromPackageName(packageName) {
 }
 
 module.exports = function(env) {
-   const DIST = path.resolve(__dirname, 'dist');
-
    env = env || {};
 
    return {
@@ -35,7 +33,6 @@ module.exports = function(env) {
          // bundle will throw a `ReferenceError: "window" is undefined` error when
          // executed in node.js.
          globalObject: 'this',
-         path: DIST,
          filename: `${getFileNameFromPackageName(pkg.name)}.js`,
       },
       // Let webpack recognize both javascript and typescript files

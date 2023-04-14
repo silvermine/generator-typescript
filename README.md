@@ -1,10 +1,10 @@
 # Silvermine TypeScript Project Yeoman Generator
 
-[![NPM Version](https://img.shields.io/npm/v/@silvermine/generator-typescript.svg)](https://www.npmjs.com/package/@silvermine/generator-typescript)
-[![License](https://img.shields.io/github/license/silvermine/generator-typescript.svg)](./LICENSE)
-[![Build Status](https://travis-ci.com/silvermine/generator-typescript.svg?branch=master)](https://travis-ci.com/silvermine/generator-typescript)
-[![Dependency Status](https://david-dm.org/silvermine/generator-typescript.svg)](https://david-dm.org/silvermine/generator-typescript)
-[![Dev Dependency Status](https://david-dm.org/silvermine/generator-typescript/dev-status.svg)](https://david-dm.org/silvermine/generator-typescript#info=devDependencies&view=table)
+[![NPM Version][npm-version]][npm-version-url]
+[![License][license-badge]][license-url]
+[![Build Status][build-status]][build-status-url]
+[![Coverage Status][coverage-status]][coverage-status-url]
+[![Conventional Commits][conventional-commits-url]
 
 ## What is it?
 
@@ -72,4 +72,14 @@ an app, or a server that serves a REST API.
 ## License
 
 This software is released under the MIT license. See [the license
-file](LICENSE) for more details.
+file](license-url) for more details.
+
+[npm-version]: https://img.shields.io/npm/v/@silvermine/<%= projectName %>.svg
+[npm-version-url]: https://www.npmjs.com/package/@silvermine/<%= projectName %>
+[license-badge]: https://img.shields.io/github/license/silvermine/<%= projectName %>.svg
+[license-url]: ./LICENSE
+[build-status]: https://github.com/silvermine/<%= projectName %>/actions/workflows/ci.yml/badge.svg
+[build-status-url]: https://travis-ci.org/silvermine/<%= projectName %>.svg?branch=master
+[coverage-status]: https://coveralls.io/repos/github/silvermine/<%= projectName %>/badge.svg?branch=master
+[coverage-status-url]: https://coveralls.io/github/silvermine/<%= projectName %>?branch=master
+[conventional-commits-url]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
