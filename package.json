@@ -5,7 +5,7 @@
    "license": "MIT",
    "description": "A Yeoman generator for creating back-end and front-end TypeScript projects with out-of-the-box build, test, and linting configuration.",
    "scripts": {
-      "test": "check-node-version --npm 8.5.5 && ./tests/scripts/integration-test.sh",
+      "test": "check-node-version --npm 11.19.1 && ./tests/scripts/integration-test.sh",
       "commitlint": "./node_modules/.bin/commitlint --from 3c68c07",
       "release:preview": "node ./node_modules/@silvermine/standardization/scripts/release.js preview",
       "release:prep-changelog": "node ./node_modules/@silvermine/standardization/scripts/release.js prep-changelog",
